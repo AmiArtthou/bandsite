@@ -1,0 +1,373 @@
+@use "partials/variables" as *;
+@use "partials/mixins" as *;
+
+body {
+    margin: auto 1rem auto 1rem;
+  
+    @include tablet {
+        margin: auto 2rem auto 2rem;
+    }
+    @include desktop {
+        margin: auto auto auto auto;
+    }
+
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+ position: fixed;
+ margin: auto auto auto -1.2rem;
+ top:0;
+ z-index: 10000;
+ vertical-align: middle;
+ background: black;
+ width: 100%;
+ color: #CDCBCA;
+
+
+ 
+}
+
+
+ul {
+   list-style-type: none; 
+   text-decoration: none;
+ 
+   display: flex;
+   justify-content: space-between;
+   color: #CDCBCA;
+   align-items: center;
+}
+
+li {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    color: #CDCBCA;
+   
+
+    @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+        color: #CDCBCA;
+    }
+    @include desktop {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+        color: #CDCBCA;
+    }
+
+}
+
+.nav__item--Bandsite {
+    /*justify-content: center;
+   text-align: center;*/
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+    color: #CDCBCA;
+
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    @include desktop {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+}
+
+
+
+.nav__item--Biography:hover, .nav__item--Shows:hover {
+   
+   border-bottom: 0.3rem solid white;
+   padding: 0 5.4rem;
+   color: white;
+   font-weight: bold;
+   padding-bottom: 0.5rem;
+   /* padding: 0 0 4px;*/
+
+   @include tablet {
+    padding: initial;
+    padding-bottom: 0.5rem;
+   }
+
+   @include desktop {
+    padding: initial;
+    padding-bottom: 0.5rem;
+   }
+
+  
+
+}
+
+.div__backgroundImage {
+    position: relative;
+    background-image: url(../assets/images/hero-bio.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    height: 50rem;
+    background-position: 100% 0%;
+
+    @include tablet {
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+        height: 35rem;
+        background-position: 50% 5%;
+    }
+    @include desktop {
+       background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+        height: 43rem;
+        background-position: 50% 5%;
+    }
+}
+
+.div__h1--bandName {
+    color: white;
+    position: absolute;
+   /*bottom: -10rem;
+    left: 16px;*/
+   top: 20%;
+  left: 10%;
+  /*transform: translate(-50%, -50%);*/
+    display: inline-block;
+
+ width: 100%;
+text-align: left;
+ /*justify-content: center;*/
+   /* content-align: center;*/
+    margin-top: 3.4rem;
+    /*padding: 15rem;*/
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    
+
+    @include tablet {
+        font-size: 3.75rem;
+        line-height: 4.25rem;
+        font-weight: 700;
+        top: 34%;
+        left: 10%;
+    }
+    @include desktop {
+        font-size: 3.75rem;
+        line-height: 4.25rem;
+        font-weight: 700;
+       
+    }
+}
+
+/*.div__h1--bandName {
+    position: inherit;
+    justify-content: center;
+    text-align: center;
+}
+
+.img__bandName {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    background-position: 50% 50%;
+}*/
+
+h2 {
+
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+
+    /*display: flex;
+    flex-direction: column;
+    margin: 0 20px;*/
+
+
+    @include tablet {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        font-weight: 700;
+    }
+    @include desktop {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        font-weight: 700;
+    }
+
+   
+  
+   /* @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      width: 40%;
+        margin: 3vw 0;
+        background-color: #ffe584;
+    }
+
+    @include desktop {
+        width: 30%;
+  
+    &__item {
+      text-align: center;
+      background: lightblue;
+      margin: 20px 0;
+      padding: 20px 0;
+      font-size: 5rem;
+      border-radius: 5px;
+  
+      
+  
+      
+      }*/
+    }
+
+    .h2__p {
+        font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    @include desktop {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    }
+
+h3 {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    @include desktop {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    
+}
+
+
+  
+p {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        font-weight: 400;
+    }
+    @include desktop {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        font-weight: 400;
+    }
+   
+  
+}
+
+.div__PhotoGallery--Items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    @include tablet {
+        width: 29%;
+        height: 29%;
+    }
+    @include desktop {
+        width: 30%;
+    height: 30%;
+    }
+
+}
+
+footer {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+    }
+    @include desktop {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+    }
+}
+
+.footer__div--Social-Header {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+
+
+    @include tablet {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        font-weight: 700;
+    }
+    @include desktop {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        font-weight: 700;
+    }
+}
+
+.footer__div--BANDSITE {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+    @include desktop {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+}
+
