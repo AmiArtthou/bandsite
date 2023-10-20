@@ -120,23 +120,6 @@ function showsList(shows) {
 }
 
 
-/*function automaticTimestamps() {
-  commentsArray.forEach(comment => {
-      comment.Timestamp = new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: 'numeric'
-      });
-
-      //text for bug fix on new comments that have timestamps that don't respond to the styling that the default ones respond to (not to the right side enough) - by assigning it an extra class. 
-      const commentTimestamp = document.querySelector(".commentTimestamp");
-      commentItem.classList.add('commentTimestampSpecificity');
-    
-  });
-}*/
-
-// showsList(showsData);
-
 function formattedDate(showsData) {
   const date = new Date(showsData);
 const options = {
@@ -185,7 +168,6 @@ divShowsContainer.appendChild(showsContainer);
 
 // :) 
 
-//adding modifier class for rows that change sass styles when clicked on via event listener
 
 // Add an event listener to the shows container
 
@@ -216,28 +198,6 @@ divShowsContainer.appendChild(showsContainer);
   });
 
 
-  /*showsContainer.addEventListener('mousedown', (event) => {
-    if (event.target.classList.contains('show-row')) { 
-    
-      const allHeaders = document.querySelectorAll('.dateHeader, .venueHeader, .locationHeader');
-
-//adding both 'row-click' and 'click' in attempt to increase specifity for the click to override the hover but it doesn't really work. 
-
-     
-      allHeaders.forEach((row) => {
-        row.classList.remove('header-click');
-      });
-    
-
-      event.target.classList.add('header-click');
-     
-
-      //added this as a big fix attempt to see if it would make the click/ mousedown event rspond faster but it didn't really. 
-      event.stopPropagation();
-
-    }
-  });*/
-
   //attempting to debug the headers appearing upon click events
   showsContainer.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('show-row')) {
@@ -259,24 +219,3 @@ divShowsContainer.appendChild(showsContainer);
       });
     }
   });
-
-
-
- /* function automaticTimestamps() {
-    allshowRows.forEach(show => {
-        show.date = new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: 'numeric'
-        });  
-    });
-} */
-
-
-  //retrieve API show data 
-  // bandSiteAPI1.getShows()
-  // .then(showDates => {
-  //   console.log("Show Dates:", showDates);
-  // });
-
-
