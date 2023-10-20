@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/bio.css">
     <!--<link rel="stylesheet" type="text/css" href="assets/fonts/Alternative files/AvenirNextLTPro.ttf">-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/stylesheet.css">
-    <script type="text/javascript" src="scripts/index-page.js"></script>
+   
   </head>
   <body>
     <nav>
@@ -55,16 +55,20 @@
         </div>
     </div>
 
-    <div class="h2__Comment-Section">
-        <h2>Join the Conversation</h2>
+    <div class="div__Comment-Section">
+        <h2 class="h2__Comment-Section">Join the Conversation</h2>
 
         <form class="commentForm">
-            <input type="text" class="name" placeholder="Enter your name" required>
+            
+            <label class="label__Name">NAME</label>
+            <div class="div__Name"><img class="avatar" src="assets/images/Mohan-muruge.jpg"/><input class="Name" type="text" placeholder="Enter your name" required></div>
+            <label class="label__Comment">COMMENT<br></label>
             <textarea class="comment" placeholder="Add a new comment" required></textarea>
             <button type="submit">COMMENT</button>
         </form>
 
         <ul class="commentList">
+          
             <!-- Comments -->
             
         </ul>
@@ -122,5 +126,10 @@
             
     </footer>
 
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="scripts/bandsite-api.js"></script>
+    <script type="text/javascript" src="scripts/index-page.js"></script>
+   
   </body>
 </html>

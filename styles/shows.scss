@@ -354,8 +354,12 @@ text-align: left;
     }
 }
 
+.p__Beautiful {
+    margin-top: -5rem;
+}
 
 .h1__bandName {
+    
 font-size: 2.5rem;
 line-height: 3rem;
 position: relative; 
@@ -435,14 +439,30 @@ img {
     background-color: #FFFFFF;
     padding: 1rem;
     display: flex; 
-flex-direction: row; 
+flex-direction: column; 
 flex-wrap: wrap;
+
+/*@include tablet {
+    flex-direction: row; 
+}
+
+@include desktop {
+    flex-direction: row; 
+}*/
     
 }
 
 .shows {
 display: flex;
 flex-direction: column;
+
+@include tablet {
+  
+}
+
+@include desktop {
+  
+}
 
 }
 
@@ -455,12 +475,26 @@ flex-direction: column;
    margin-bottom: 1rem;
    padding: 1rem;
    //position: relative;
+   max-width: 75vw;
+
+  @include tablet {
+    flex-direction: row; 
+   }
+
+@include desktop {
+    flex-direction: row; 
+    
+    
+}
 }
 
 .show-row:hover {
    background-color: #FAFAFA;
+   
   
  }
+
+ 
 
 
  /*.show-row:active {
@@ -469,9 +503,36 @@ flex-direction: column;
 
  .show-row.row-click, .click {
     background-color: #E1E1E1;
+   
+   
  }
 
+ //bugfix attempt to fix how the headers don't change color upon click event 
+ .dateHeader.header-click {
 
+    @include tablet {
+    color: #E1E1E1;
+    }
+
+    @include desktop {}
+ }
+
+ .venueHeader.header-click {
+    @include tablet {
+        color: #E1E1E1;
+        }
+    
+        @include desktop {}
+
+ }
+
+ .locationHeader.header-click {
+    @include tablet {
+        color: #E1E1E1;
+        }
+    
+        @include desktop {}
+ }
 
 
 
@@ -483,23 +544,73 @@ margin-top: 1rem;
     color: #AFAFAF;
     margin-bottom: 1rem;
     font-size: 1.1rem;
+
+    @include tablet {
+        color: #FFFFFF;
+    }
+
+    @include desktop {
+        color: #FFFFFF;
+    }
    
 }
+
+
 
 .dateEl, .venueEl, .locationEl {
     margin-bottom: 2rem;
     font-size: 1.4rem;
     font-weight: 400;
+
+    @include tablet {
+        flex-direction: row; 
+    }
+
+    @include desktop {
+        flex-direction: row; 
+        font-size: 1rem;
+    }
+}
+
+.locationEl {
+
+    @include tablet {
+       
+    }
+
+    @include desktop {
+     // margin-right: 1rem;
+      // margin-left: -3rem;
+    }
 }
 
 .dateEl {
     font-weight: 800;
+
+    @include desktop {
+        margin-left: auto;
+       
+    }
 }
 
 .buttonDiv {
     
     justify-content: center;
     align-items: center;
+
+    @include tablet {
+        flex-direction: row; 
+    }
+
+    @include desktop {
+        flex-direction: row; 
+        //max-width: 5vw;
+        //justify-content: initial;
+        //text-align: center;
+        //margin-right: -11rem;
+       // max-width: 3vw;
+        
+    }
  
 }
 
@@ -513,10 +624,37 @@ color: #FFFFFF;
 padding: 1.5rem 12rem 1.5rem 12rem;
 
 margin-bottom: 2rem;
+max-width: 85vw;
 
 //align-items: center;
 //position: absolute;
 
+@include tablet {
+    flex-direction: row; 
+    text-align: center;
+    margin-right: -7rem;
+    padding: 1rem 4rem 1rem 4rem;
+   white-space: nowrap;
+   //text-align: right;
+   //flex-wrap: wrap;
+   justify-content: flex-end;
+   margin-left: 3rem;
+ 
+
+}
+
+@include desktop {
+    flex-direction: row; 
+   // margin-right: -11rem;
+   
+ 
+ //  gap: calc(300px + 50%);
+ padding: 0.7rem 2rem 0.7rem 2rem;
+ font-size: 1rem;
+
+
+ //text-align: center;
+}
 
 }
 
@@ -836,9 +974,10 @@ padding-bottom: 1rem;
 
     @include tablet {
     margin-top: 2rem;
-   
+    padding-left: 1rem;
     }
 
     @include desktop {
+        padding-left: 2rem;
     }
 }

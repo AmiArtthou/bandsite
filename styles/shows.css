@@ -316,6 +316,10 @@ li {
   }
 }
 
+.p__Beautiful {
+  margin-top: -5rem;
+}
+
 .h1__bandName {
   font-size: 2.5rem;
   line-height: 3rem;
@@ -384,21 +388,38 @@ img {
   background-color: #FFFFFF;
   padding: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  /*@include tablet {
+      flex-direction: row; 
+  }
+
+  @include desktop {
+      flex-direction: row; 
+  }*/
 }
 
 .shows {
   display: flex;
   flex-direction: column;
 }
-
 .show-row {
   border-bottom: 0.15rem solid #E1E1E1;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   padding: 1rem;
+  max-width: 75vw;
+}
+@media screen and (min-width: 768px) {
+  .show-row {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-row {
+    flex-direction: row;
+  }
 }
 
 .show-row:hover {
@@ -412,6 +433,21 @@ img {
   background-color: #E1E1E1;
 }
 
+@media screen and (min-width: 768px) {
+  .dateHeader.header-click {
+    color: #E1E1E1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .venueHeader.header-click {
+    color: #E1E1E1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .locationHeader.header-click {
+    color: #E1E1E1;
+  }
+}
 .dateHeader {
   margin-top: 1rem;
 }
@@ -421,20 +457,56 @@ img {
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
+@media screen and (min-width: 768px) {
+  .dateHeader, .venueHeader, .locationHeader {
+    color: #FFFFFF;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .dateHeader, .venueHeader, .locationHeader {
+    color: #FFFFFF;
+  }
+}
 
 .dateEl, .venueEl, .locationEl {
   margin-bottom: 2rem;
   font-size: 1.4rem;
   font-weight: 400;
 }
+@media screen and (min-width: 768px) {
+  .dateEl, .venueEl, .locationEl {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .dateEl, .venueEl, .locationEl {
+    flex-direction: row;
+    font-size: 1rem;
+  }
+}
 
 .dateEl {
   font-weight: 800;
+}
+@media screen and (min-width: 1280px) {
+  .dateEl {
+    margin-left: auto;
+  }
 }
 
 .buttonDiv {
   justify-content: center;
   align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .buttonDiv {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .buttonDiv {
+    flex-direction: row;
+  }
 }
 
 .button {
@@ -446,6 +518,25 @@ img {
   color: #FFFFFF;
   padding: 1.5rem 12rem 1.5rem 12rem;
   margin-bottom: 2rem;
+  max-width: 85vw;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    flex-direction: row;
+    text-align: center;
+    margin-right: -7rem;
+    padding: 1rem 4rem 1rem 4rem;
+    white-space: nowrap;
+    justify-content: flex-end;
+    margin-left: 3rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .button {
+    flex-direction: row;
+    padding: 0.7rem 2rem 0.7rem 2rem;
+    font-size: 1rem;
+  }
 }
 
 .img__Faceboook, .Important {
@@ -718,5 +809,11 @@ footer {
 @media screen and (min-width: 768px) {
   .footer__Copyright {
     margin-top: 2rem;
+    padding-left: 1rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer__Copyright {
+    padding-left: 2rem;
   }
 }/*# sourceMappingURL=shows.css.map */

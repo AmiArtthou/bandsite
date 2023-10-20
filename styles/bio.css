@@ -578,7 +578,90 @@ img {
   }
 }
 
-.h2__Comment-Section {
+.commentForm {
+  width: 75%;
+  display: flex;
+  width: 75%;
+  padding: 1rem 3rem 1rem 8rem;
+  flex-direction: column;
+}
+
+.div__Name {
+  display: flex;
+  flex-direction: row;
+}
+
+.label__Name {
+  margin-left: 1.1rem;
+  color: #AFAFAF;
+  padding-bottom: 1rem;
+  margin-top: -2rem;
+}
+
+.label__Comment {
+  margin-left: 1.4rem;
+  color: #AFAFAF;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  margin-left: -6.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-top: -1.2rem;
+}
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-bottom: -2.5rem;
+  }
+}
+
+.Name {
+  margin-left: 1.5rem;
+  width: 85%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid #E1E1E1;
+  border-radius: 0.5rem;
+  background-color: #FAFAFA;
+  font-size: 1.5rem;
+  font-family: "Avenir";
+}
+
+.comment {
+  margin-left: 1.3rem;
+  width: 85%;
+  height: 20vh;
+  background-color: #FAFAFA;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  border: 2px solid #E1E1E1;
+  font-family: "Avenir";
+  padding: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .comment {
+    width: 85%;
+  }
+}
+
+button {
+  width: 92%;
+  margin-left: 1.5rem;
+  background-color: #323232;
+  padding: 1rem 5rem 1rem 5rem;
+  font-size: 1.5rem;
+  color: white;
+  border-radius: 0.5rem;
+  font-family: "Avenir";
+}
+
+.div__Comment-Section {
   background-color: white;
   color: #323232;
   display: flex;
@@ -586,60 +669,115 @@ img {
   flex-wrap: wrap;
 }
 
+.h2__Comment-Section {
+  margin-left: 3rem;
+}
+
 .commentList {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   color: #323232;
+  border-color: #E1E1E1;
+  border-top: 0.15rem solid #E1E1E1;
+  margin-top: 1rem;
+  width: 75%;
+  margin-left: 1rem;
+  padding-right: 5rem;
 }
 
 .commentItem {
-  width: 75%;
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-bottom: 0.15rem solid #E1E1E1;
+  max-width: 50vw;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.div__emptyAvatar {
+  border: 1px solid #E1E1E1;
+  border-radius: 50%;
+  background-color: #E1E1E1;
+  width: 4rem;
+  height: 4rem;
+  margin-left: -7rem;
+  margin-bottom: -4rem;
+}
+@media screen and (min-width: 768px) {
+  .div__emptyAvatar {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.div__commentItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.div__nameAndTimestamp {
   display: flex;
   flex-direction: row;
 }
 
-.name {
-  justify-content: center;
-  align-items: center;
+@media screen and (min-width: 1280px) {
+  .commentName {
+    min-width: 15rem;
+  }
+}
+
+.commentTimestamp {
+  margin-left: 10rem;
+  margin-top: 0;
+  color: #AFAFAF;
+}
+@media screen and (min-width: 768px) {
+  .commentTimestamp {
+    margin-left: 30vw;
+    margin-top: 0;
+    color: #AFAFAF;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .commentTimestamp {
+    margin-left: 50vw;
+  }
+}
+
+.commentTimestampSpecificity {
+  margin-left: 20rem;
+  margin-top: 0;
+  color: #AFAFAF;
+  color: red;
+}
+@media screen and (min-width: 768px) {
+  .commentTimestampSpecificity {
+    margin-left: 30vw;
+    margin-top: 0;
+    color: #AFAFAF;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .commentTimestampSpecificity {
+    margin-left: 50vw;
+  }
+}
+
+.commentComment {
+  width: 65vw;
 }
 
 .commentText {
+  display: flex;
+  flex-direction: row;
   width: 75%;
   color: #323232;
   font-size: 1.5rem;
   line-height: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.commentForm {
-  width: 75%;
-}
-
-.name {
-  width: 75%;
-  padding: 1rem;
-  background-color: #FAFAFA;
-  font-size: 1.5rem;
-  font-family: "Avenir";
-}
-
-.comment {
-  width: 75%;
-  background-color: #FAFAFA;
-  font-size: 1.5rem;
-  font-family: "Avenir";
-}
-
-button {
-  width: 75%;
-  background-color: #323232;
-  padding: 1rem 5rem 1rem 5rem;
-  font-size: 1.5rem;
-  color: white;
-  border-radius: 0.5rem;
-  font-family: "Avenir";
 }
 
 .img__Faceboook, .Important {
@@ -912,5 +1050,11 @@ footer {
 @media screen and (min-width: 768px) {
   .footer__Copyright {
     margin-top: 2rem;
+    padding-left: 1rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer__Copyright {
+    padding-left: 2rem;
   }
 }/*# sourceMappingURL=bio.css.map */

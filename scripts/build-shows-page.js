@@ -1,44 +1,50 @@
-const showsData = [ 
-{
-    DATE: 'Mon Sept 06 2021',
-VENUE: 'Ronald Lane',
-LOCATION: 'San Francisco, CA',
-}, 
-
-{
-DATE: 'Tue Sept 21 2021',
-VENUE: 'Pier 3 East',
-LOCATION: 'San Francisco. CA',
-
-},
-
-{
-    DATE: 'Fri Oct 15 2021',
-    VENUE: 'View Lounge',
-    LOCATION: 'San Fransisco, CA',
-
-},
-
-{
-    DATE: 'Sat Nov 06 2021',
-    VENUE: 'Hyatt Agency',
-    LOCATION: 'San Franscisco, CA',
-},
-
-{
-    DATE: 'Fri Nov 26 2021',
-    VENUE: 'Moscow Center',
-    LOCATION: 'San Fransisco, CA',
-},
-
-{
-    DATE: 'Wed Dec 15 2021',
-    VENUE: 'Press Club',
-    LOCATION: 'San Fransisco, CA',
-}
 
 
-];
+// const showsData = [ 
+// {
+//     DATE: 'Mon Sept 06 2021',
+// VENUE: 'Ronald Lane',
+// LOCATION: 'San Francisco, CA',
+// }, 
+
+// {
+// DATE: 'Tue Sept 21 2021',
+// VENUE: 'Pier 3 East',
+// LOCATION: 'San Francisco. CA',
+
+// },
+
+// {
+//     DATE: 'Fri Oct 15 2021',
+//     VENUE: 'View Lounge',
+//     LOCATION: 'San Fransisco, CA',
+
+// },
+
+// {
+//     DATE: 'Sat Nov 06 2021',
+//     VENUE: 'Hyatt Agency',
+//     LOCATION: 'San Franscisco, CA',
+// },
+
+// {
+//     DATE: 'Fri Nov 26 2021',
+//     VENUE: 'Moscow Center',
+//     LOCATION: 'San Fransisco, CA',
+// },
+
+// {
+//     DATE: 'Wed Dec 15 2021',
+//     VENUE: 'Press Club',
+//     LOCATION: 'San Fransisco, CA',
+// }
+
+
+// ];
+
+
+
+
 
 //shows div
 const showsContainer = document.createElement('div');
@@ -53,15 +59,15 @@ function showsList(shows) {
         //shows data 
         const dateEl = document.createElement('span');
         dateEl.classList.add('dateEl');
-        dateEl.textContent = show.DATE;
+        dateEl.textContent = show.date;
 
         const venueEl = document.createElement('span');
         venueEl.classList.add('venueEl');
-        venueEl.textContent = show.VENUE;
+        venueEl.textContent = show.place;
 
         const locationEl = document.createElement('span');
         locationEl.classList.add('locationEl');
-        locationEl.textContent = show.LOCATION;
+        locationEl.textContent = show.location;
 
 
         //headers for rows data types
@@ -113,7 +119,60 @@ function showsList(shows) {
     });
 }
 
-showsList(showsData);
+
+/*function automaticTimestamps() {
+  commentsArray.forEach(comment => {
+      comment.Timestamp = new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: 'numeric'
+      });
+
+      //text for bug fix on new comments that have timestamps that don't respond to the styling that the default ones respond to (not to the right side enough) - by assigning it an extra class. 
+      const commentTimestamp = document.querySelector(".commentTimestamp");
+      commentItem.classList.add('commentTimestampSpecificity');
+    
+  });
+}*/
+
+// showsList(showsData);
+
+function formattedDate(showsData) {
+  const date = new Date(showsData);
+const options = {
+  weekday: 'short',
+  month: 'short',
+  day: '2-digit',
+  year: 'numeric'
+ 
+};
+
+
+  return date.toLocaleDateString('en-GB', options); 
+
+}
+
+async function loadComment (){
+  try{
+   const showsData = await bandSiteAPI1.getShows();
+
+   showsData.forEach(show => {
+    show.date = formattedDate(show.date);
+});
+
+    showsList(showsData);
+
+ 
+
+  }catch{
+   console.log("there is an error")
+ 
+ 
+}
+}
+
+loadComment();
+
 
 
 const divShowsContainer = document.querySelector('.div__whiteBackground');
@@ -133,8 +192,14 @@ divShowsContainer.appendChild(showsContainer);
   showsContainer.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('show-row')) { 
       const allShowRows = document.querySelectorAll('.show-row');
+      const allHeaders = document.querySelectorAll('.dateHeader, .venueHeader, .locationHeader');
+
+//adding both 'row-click' and 'click' in attempt to increase specifity for the click to override the hover but it doesn't really work. 
 
       allShowRows.forEach((row) => {
+        row.classList.remove('row-click');
+      });
+      allHeaders.forEach((row) => {
         row.classList.remove('row-click');
       });
       allShowRows.forEach((row) => {
@@ -151,9 +216,67 @@ divShowsContainer.appendChild(showsContainer);
   });
 
 
+  /*showsContainer.addEventListener('mousedown', (event) => {
+    if (event.target.classList.contains('show-row')) { 
+    
+      const allHeaders = document.querySelectorAll('.dateHeader, .venueHeader, .locationHeader');
 
-/*showsContainer.addEventListener('click', function(event) {
-    if (event.target.classList.contains('show-row')) {
-      console.log('blah');
+//adding both 'row-click' and 'click' in attempt to increase specifity for the click to override the hover but it doesn't really work. 
+
+     
+      allHeaders.forEach((row) => {
+        row.classList.remove('header-click');
+      });
+    
+
+      event.target.classList.add('header-click');
+     
+
+      //added this as a big fix attempt to see if it would make the click/ mousedown event rspond faster but it didn't really. 
+      event.stopPropagation();
+
     }
   });*/
+
+  //attempting to debug the headers appearing upon click events
+  showsContainer.addEventListener('mousedown', (event) => {
+    if (event.target.classList.contains('show-row')) {
+      const allHeaders = document.querySelectorAll('.dateHeader, .venueHeader, .locationHeader');
+  
+      allHeaders.forEach((header) => {
+        header.classList.add('header-click');
+      });
+  
+      // Remove the 'header-click' class from the previously clicked show-row's headers
+      const allShowRows = document.querySelectorAll('.show-row');
+      allShowRows.forEach((row) => {
+        if (row !== event.target) {
+          const headersInRow = row.querySelectorAll('.dateHeader, .venueHeader, .locationHeader');
+          headersInRow.forEach((header) => {
+            header.classList.remove('header-click');
+          });
+        }
+      });
+    }
+  });
+
+
+
+ /* function automaticTimestamps() {
+    allshowRows.forEach(show => {
+        show.date = new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric'
+        });  
+    });
+} */
+
+
+  //retrieve API show data 
+  // bandSiteAPI1.getShows()
+  // .then(showDates => {
+  //   console.log("Show Dates:", showDates);
+  // });
+
+

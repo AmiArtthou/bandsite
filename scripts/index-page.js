@@ -1,5 +1,12 @@
+
+//empty array 
+
+const commentsArray = [];
+
+
 // Initial comments array with 3 default comments
-const commentsArray = [
+
+/* const commentsArray = [
     
     {
         Name: 'Connor Walton',
@@ -20,7 +27,7 @@ const commentsArray = [
     },
 ];
 
-
+*/
      
 
 // Function to display a new comment
@@ -31,10 +38,12 @@ function displayComment(comment) {
     const commentText = document.createElement('p');
     commentText.classList.add('commentText');
 
-    commentText.innerHTML = `<strong>${comment.Name}</strong><p>${comment.Timestamp}</p><br>${comment.Comment}`;
+    commentText.innerHTML = `<div class="div__commentItem"><div class="div__emptyAvatar"></div><div class="div__nameAndTimestamp"><strong class="commentName">${comment.name}</strong><p class="commentTimestamp">${comment.timestamp}</p></div><p class="commentComment">${comment.comment}</p></div>`;
    
     commentItem.appendChild(commentText);
     commentList.appendChild(commentItem);
+
+  
 }
 
 // Function to clear all comments before re-rendering them to ensure that the web page doesn't display duplicates when re-rendered
@@ -42,52 +51,122 @@ function displayComment(comment) {
 function render() {
     const commentList = document.querySelector('.commentList');
     commentList.textContent = ''; 
-
     commentsArray.forEach(comment => {
+       
         displayComment(comment);
+      
     });
 }
+
+
 
 // Event listener for form inputs
 document.addEventListener('DOMContentLoaded', function () {
     const commentForm = document.querySelector('.commentForm');
 
-    commentForm.addEventListener('submit', function (event) {
+    commentForm.addEventListener('submit', async function displayComments2(event) {
+
+        //prevents form from default behaviour of refreshing page after inputting comment
         event.preventDefault();
 
-        const name = document.querySelector('.name').value;
-        const commentText = document.querySelector('.comment').value;
+        const Name = document.querySelector('.Name').value;
+      
+        const Comment = document.querySelector('.comment').value;
+       
 
-        if (name && commentText) {
-            const timestamp = new Date().toLocaleDateString();
+        if (Name && Comment) {
+            const Timestamp = new Date().toLocaleDateString();
             
             const newComment = {
-                Name: name,
-                Timestamp: timestamp,
-                Comment: commentText
+                name: Name,
+                timestamp: Timestamp,
+                comment: Comment
+
+               
             };
+          
 
-            commentsArray.unshift(newComment);
-            render(); 
+           try {
+            const response = await bandSiteAPI1.postComment(newComment);
+            
 
-            // Clear the form's input fields after submitting a new comment
-            document.querySelector('.name').value = '';
-            document.querySelector('.comment').value = '';
+            console.log("Posted Comment:", response);
+            
+            commentsArray.unshift(newComment); 
+      
+         formattedTimestamps(); //not working
+          
+            render();
+          
+            console.log(newComment);
+            console.log(response);
+
+           
+
+        } catch (error) {
+            console.error("Error posting comment:", error);
         }
+
+      
+        
+        
+            // Clear the form's input fields after submitting a new comment
+            document.querySelector('.Name').value = '';
+            document.querySelector('.comment').value = '';
+           
+        }
+
+        render();
     });
 
     // render so that default comments show up upon refreshing web page 
+    
     render();
+   
+ 
 });
 
-// Function for automatic date input
-document.addEventListener('DOMContentLoaded', function () {
-    const currentDateEl = document.querySelector(`${comment.Timestamp}`);
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString('en-US', {
-        month: '2-digit',
-        day: '2-digit',
-        year: 'numeric'
+
+
+//to format date properly - bugfix attempt not successful though - only changes one comment.
+
+function formattedTimestamps() {
+    commentsArray.forEach(comment => {
+        comment.timestamp = new Date(comment.timestamp).toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric'
+        })
+       
+render();
+
+        //text for bug fix on new comments that have timestamps that don't respond to the styling that the default ones respond to (not to the right side enough) - by assigning it an extra class. 
+        const commentTimestamp = document.querySelector(".commentTimestamp");
+        commentItem.classList.add('commentTimestampSpecificity');
+      
     });
-    currentDateEl.textContent = formattedDate;
-});
+
+   render();
+   
+} 
+
+
+
+
+  async function retrieveComments (){
+    try{
+     const commentsData = await bandSiteAPI1.getComments();
+    // commentsArray.length = 0;
+     commentsArray.push(...commentsData); 
+    
+     formattedTimestamps();
+      render();
+    }catch(error){
+     console.log("there is an error") // this error only occurs when I keep 'formattedTimestamps();' in the code. 
+    }
+    
+  } 
+ 
+  retrieveComments(); 
+
+  
